@@ -49,3 +49,7 @@ def hangeman(man):
 	===========
 	""",
 	]
+
+
+	print screen[man]
+	return
