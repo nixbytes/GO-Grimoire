@@ -1,6 +1,6 @@
 # pyjournals
 
-collection of python algorithm and function 
+collection of python algorithm, function and theories
 
 ## List
 
