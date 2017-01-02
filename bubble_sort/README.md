@@ -6,6 +6,9 @@ The bubble sort makes multiple passes thought a list and compares items and exch
 
 ![Bubble Sort](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)]
 
+### example 2
+![Buble Sort](https://en.wikipedia.org/wiki/File:Bubble_sort_animation.gif)
+
 quoted from wiki
 
 "Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list to be sorted, compares each pair of adjacent items and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted. "
