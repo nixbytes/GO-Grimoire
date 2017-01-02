@@ -7,7 +7,7 @@ The bubble sort makes multiple passes thought a list and compares items and exch
 [![Bubble Sort](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)]
 
 ### example 2
-[![Buble Sort](https://en.wikipedia.org/wiki/File:Bubble_sort_animation.gif)]
+[![Buble Sort](https://upload.wikimedia.org/wikipedia/commons/3/37/Bubble_sort_animation.gif)]
 
 quoted from wiki
 
