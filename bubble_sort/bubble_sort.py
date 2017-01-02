@@ -1,11 +1,18 @@
 #!/bin/python
-    
+from random import randint
+
 def bubble_sort(numbers):
     """
-    Inefficiently sort the mutable numbersuence (list) in place.
-       numbers MUST BE A MUTABLE numbersUENCE.
- 
-       As with list.sort() and random.shuffle this does NOT return 
+	describe from wiki
+	https://en.wikipedia.org/wiki/Bubble_sort
+
+
+	Data structure	Array
+	Worst-case performance	{\displaystyle O(n^{2})} O(n^{2})
+	Best-case performance	{\displaystyle O(n)} O(n)
+	Average performance	{\displaystyle O(n^{2})} O(n^{2})
+	Worst-case space complexity
+
     
     """
     changed = True
@@ -19,6 +26,9 @@ def bubble_sort(numbers):
  
 if __name__ == "__main__":
    """Sample usage and simple test suite"""
-   sample_list = [12,5,123,987,07,21,34]
-   print(sample_list)
+   print("==============================")
+   n = 10
+   sample_list = [randint(0, 9) for num in range(0, n)]
+   print("example list: ",sample_list)
+   print("==== result ==================")
    print(bubble_sort(sample_list))
