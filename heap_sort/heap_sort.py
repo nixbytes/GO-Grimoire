@@ -1,7 +1,9 @@
 def heapsort(num_list):
-  ''' Heapsort. Note: this function sorts in-place (it mutates the list). 
-
-
+  ''' Heapsort. 
+      Note: this function sorts in-place (it mutates the list). 
+	  
+	  Heapsort is an in-place sorting algorithm with worst case 
+	  and average complexity of   O(n logn).
   '''
  
 
