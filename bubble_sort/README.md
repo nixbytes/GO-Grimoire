@@ -17,4 +17,8 @@ quoted from wiki
 
 "It can be practical if the input is usually in sorted order but may occasionally have some out-of-order elements nearly in position."
 
+<<<<<<< HEAD
 [wikipedia](https://en.wikipedia.org/wiki/Bubble_sort)
+=======
+[wikipedia source](https://en.wikipedia.org/wiki/Bubble_sort)
+>>>>>>> 6513542a7e53d9af27382d81b5eb57ec567d89b1
