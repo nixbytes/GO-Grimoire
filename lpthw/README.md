@@ -7,3 +7,5 @@ try the book out for free to see if the method works for you.
 If you've always wanted to learn to code but have no idea where to begin, then this book is for you.
 
 [source](https://learnpythonthehardway.org/)
+
+completed ex
