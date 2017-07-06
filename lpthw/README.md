@@ -9,3 +9,4 @@ If you've always wanted to learn to code but have no idea where to begin, then t
 [source](https://learnpythonthehardway.org/)
 
 completed ex
+- ex1 to ex 14
