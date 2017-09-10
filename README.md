@@ -14,4 +14,6 @@ I can't help it but I love to code.
 
 * create a folder with an README
 * use default python (preferably version 3+)
-* link source of algorithm or function       
+* link source of algorithm or function   
+* please provide link to source of example
+
