@@ -53,3 +53,19 @@ def hangeman(man):
 
 	print screen[man]
 	return
+
+def start():
+    print "Lets start to play hang py"
+    while game():
+        pass
+    score()
+
+def game():
+
+def letters_guess():
+
+def replay():
+
+def score():
+
+
