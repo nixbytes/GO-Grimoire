@@ -67,7 +67,7 @@ def start():
 
 
 def game():
-        #  Quickly set word for player
+    #  Quickly set word for player
     word_dictinary = ["Linux", "magic", "kitty", "playstation"]
     word = choice(word_dictinary)
     word_length = len(word)
@@ -79,7 +79,14 @@ def game():
     letters_correct = 0
     letter_wrong = 0
     global pc_score, user_score
-
+    # loop for player selection
+    while (letter_tried != tries) and ("".join(clue) != word):
+    	# call the function letters_guess
+    	letter = letters_guess()
+    	if len(letter) == 1 and letter.isalpha():
+    		if letter_tried.find(letter) != -1:
+    			print("This letter was used already", letter)
+    			
 
 def letters_guess():
     print()
