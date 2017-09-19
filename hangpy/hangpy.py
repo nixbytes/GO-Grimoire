@@ -86,6 +86,17 @@ def game():
     	if len(letter) == 1 and letter.isalpha():
     		if letter_tried.find(letter) != -1:
     			print("This letter was used already", letter)
+    	else:
+    		letter_tried = letter_tried + letter
+    		first_index = word.find(letter)
+    		if first_index == -1:
+    			letter_wrong += 1
+    			print("please try again")
+    		else:
+    			print("Nice pick!!! for chocie",letter)
+    			for i in range(word_length):
+    				if letter == word[i]:
+    					clue[i] = letter
     			
 
 def letters_guess():
