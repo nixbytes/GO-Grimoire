@@ -86,18 +86,38 @@ def game():
     	if len(letter) == 1 and letter.isalpha():
     		if letter_tried.find(letter) != -1:
     			print("This letter was used already", letter)
+	    	else:
+	    		letter_tried = letter_tried + letter
+	    		first_index = word.find(letter)
+	    		if first_index == -1:
+	    			letter_wrong += 1
+	    			print("please try again")
+	    		else:
+	    			print("Nice pick!!! for chocie",letter)
+	    			for i in range(word_length):
+	    				if letter == word[i]:
+	    					clue[i] = letter
     	else:
-    		letter_tried = letter_tried + letter
-    		first_index = word.find(letter)
-    		if first_index == -1:
-    			letter_wrong += 1
-    			print("please try again")
-    		else:
-    			print("Nice pick!!! for chocie",letter)
-    			for i in range(word_length):
-    				if letter == word[i]:
-    					clue[i] = letter
+    		print("Choose another")
     			
+    	hangeman(letter_wrong)
+    	print("".join(clue))
+    	print("Number of Guess: ", letter_tried)
+
+    	if letter_wrong == tries:
+    		print("Game Over")
+    		print("The Answer was",word)
+    		pc_score += 1
+    		break
+    	if "".join(clue) == word:
+    		print("You Win!")
+    		print("The Answer was",word)
+    		user_score += 1
+    		break
+    return replay()
+
+
+
 
 def letters_guess():
     print()
