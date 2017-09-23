@@ -59,6 +59,7 @@ def hangeman(man):
 
 def start():
     print("Lets start to play hang py")
+    print("----------------------------------")
     while game():
         pass
     score()
@@ -93,25 +94,25 @@ def game():
 	    			letter_wrong += 1
 	    			print("please try again")
 	    		else:
-	    			print("Nice pick!!! for chocie",letter)
+	    			print("Nice pick!!! for picking the letter ->",letter)
 	    			for i in range(word_length):
 	    				if letter == word[i]:
 	    					clue[i] = letter
     	else:
-    		print("Choose another")
+    		print("Choose another letter")
     			
     	hangeman(letter_wrong)
     	print("".join(clue))
-    	print("Number of Guess: ", letter_tried)
+    	print("List of Guess letter: ", letter_tried)
 
     	if letter_wrong == tries:
     		print("Game Over")
-    		print("The Answer was",word)
+    		print("The Answer was", word)
     		pc_score += 1
     		break
     	if "".join(clue) == word:
     		print("You Win!")
-    		print("The Answer was",word)
+    		print("The Answer was", word)
     		user_score += 1
     		break
     return replay()
@@ -120,16 +121,18 @@ def game():
 
 
 def letters_guess():
-    print()
-    letter = raw_input("Take a guess at the hidden word:")
+    print("------------------------------------------------") 
+    letter = raw_input("Take a guess at the hidden word \n by choosing a letter: ")
     letter.strip()
     letter.lower()
-    print()
+    print("------------------------------------------------")
     return letter
 
 
 def replay():
+	print("------------------------------------------------")
 	answer = raw_input("Would you want to play again? y/N")
+	print("------------------------------------------------")
 	if answer in ("y","Y","yes","YES","Yes"):
 		return answer
 	else:
@@ -139,9 +142,11 @@ def replay():
 
 def score():
 	global user_score, pc_score
+	print("--------------- score board -----------------")
 	print("High Scores")
 	print("Player: ", user_score)
 	print("Computer: ",pc_score)
 	
-	if __name__ == '__main__':
-		start()
+
+if __name__ == '__main__':
+	start()
