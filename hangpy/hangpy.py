@@ -129,7 +129,12 @@ def letters_guess():
 
 
 def replay():
-	return
+	answer = raw_input("Would you want to play again? y/N")
+	if answer in ("y","Y","yes","YES","Yes")
+		return answer
+	else:
+		print("Thanks for play !!!!")
+		
 
 
 def score():
