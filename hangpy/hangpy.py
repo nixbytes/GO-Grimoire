@@ -130,7 +130,7 @@ def letters_guess():
 
 def replay():
 	answer = raw_input("Would you want to play again? y/N")
-	if answer in ("y","Y","yes","YES","Yes")
+	if answer in ("y","Y","yes","YES","Yes"):
 		return answer
 	else:
 		print("Thanks for play !!!!")
@@ -138,4 +138,10 @@ def replay():
 
 
 def score():
-	return
+	global user_score, pc_score
+	print("High Scores")
+	print("Player: ", user_score)
+	print("Computer: ",pc_score)
+	
+	if __name__ == '__main__':
+		start()
