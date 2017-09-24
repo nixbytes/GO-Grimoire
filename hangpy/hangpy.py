@@ -106,17 +106,15 @@ def game():
 
     	if letter_wrong == tries:
     		print("Game Over")
-    		print("The Answer was", word)
+                print("The Answer was : ", word)
     		pc_score += 1
     		break
     	if "".join(clue) == word:
     		print("You Win!")
-    		print("The Answer was", word)
+                print("The Answer was : ", word)
     		user_score += 1
     		break
     return replay()
-
-
 
 
 def letters_guess():
@@ -137,7 +135,6 @@ def replay():
 	else:
 		print("Thanks for play !!!!")
 		
-
 
 def score():
 	global user_score, pc_score
