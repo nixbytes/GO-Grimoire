@@ -69,7 +69,7 @@ def start():
 
 def game():
     #  Quickly set word for player
-    word_dictinary = ["Linux", "magic", "kitty", "playstation"]
+    word_dictinary = ["Linux", "magic", "kitty", "playstation","tigers","bears"]
     word = choice(word_dictinary)
     word_length = len(word)
     # rules for individual
