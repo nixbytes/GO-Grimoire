@@ -68,14 +68,13 @@ def hangeman(man):
 
 
 def start():
-    print("Lets start to play hang py")
+    print("Lets start to play hangpy ")
     print("----------------------------------")
     while game():
         pass
     score()
 
 # majority of the games function
-
 
 def game():
     #  Quickly set word for player
@@ -102,14 +101,14 @@ def game():
 	    		first_index = word.find(letter)
 	    		if first_index == -1:
 	    			letter_wrong += 1
-	    			print("please try again")
+	    			print("Wrong please try again")
 	    		else:
 	    			print("Nice pick!!! for picking the letter ->",letter)
 	    			for i in range(word_length):
 	    				if letter == word[i]:
 	    					clue[i] = letter
     	else:
-    		print("Choose another letter")
+    		print("Choose another letter ")
     			
     	hangeman(letter_wrong)
     	print("".join(clue))
@@ -117,17 +116,15 @@ def game():
 
     	if letter_wrong == tries:
     		print("Game Over")
-    		print("The Answer was", word)
+                print("The Answer was : ", word)
     		pc_score += 1
     		break
     	if "".join(clue) == word:
     		print("You Win!")
-    		print("The Answer was", word)
+                print("The Answer was : ", word)
     		user_score += 1
     		break
     return replay()
-
-
 
 
 def letters_guess():
@@ -148,7 +145,6 @@ def replay():
 	else:
 		print("Thanks for play !!!!")
 		
-
 
 def score():
 	global user_score, pc_score
