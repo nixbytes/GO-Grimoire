@@ -1,10 +1,17 @@
 #!/bin/python3
-
+from collections import nametuple
 import pygame
+import sys
+import time
 
-WIDTH = 1000
+W = 804
 
-HEIGHT = 100
+H = 600
 
-def draw():
-	screen.fill((205,30,0))
+RED_COLOR = 200, 0, 0
+
+WHITE_COLOR = 200, 200, 200
+
+GOLD_COLOR = 205, 145, 0
+
+
