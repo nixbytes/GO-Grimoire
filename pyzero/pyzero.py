@@ -20,11 +20,15 @@ make the ball object for the game
 using math, and tuples 
 '''
 
-ball = Rect((W/2,H/2),(30,30))
-Direction = namedtuple('Direction','x y')
-ball_dir = Direction(5,-5)
+ball = Rect((W/2, H/2), (30, 30))
+Direction = namedtuple('Direction', 'x y')
+ball_dir = Direction(5, -5)
 
-bat = Rect((W/2, 0.96 * H),(120, 15))
+bat = Rect((W/2, 0.96 * H), (120, 15))
+
 
 class Block(Rect):
-	def __init__ (self,colour,rect):
+
+    def __init__(self, colour, rect):
+        Rect.__init__(self, rect)
+        self.colour = colour
