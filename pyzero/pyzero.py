@@ -38,3 +38,14 @@ class Block(Rect):
         self.colour = colour
 
 block = [] 
+
+
+for n_block in range(24):
+	block = Block(GOLD_COLOR,((((n_block % 8)* 100) + 2,((n_block // 8)* 25) + 2),(96, 23)))
+	block.append(block)
+
+def draw_block():
+	for block in blocks:
+		screen.draw.filled_rect(block, block.colour)
+
+
