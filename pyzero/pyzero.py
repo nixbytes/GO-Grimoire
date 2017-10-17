@@ -1,5 +1,6 @@
-#!/bin/python3
-from collections import nametuple
+#!/usr/bin/python3
+
+import collections
 import pygame
 import sys
 import time
@@ -37,15 +38,15 @@ class Block(Rect):
 
         self.colour = colour
 
-block = [] 
+block = []
 
 
 for n_block in range(24):
-	block = Block(GOLD_COLOR,((((n_block % 8)* 100) + 2,((n_block // 8)* 25) + 2),(96, 23)))
-	block.append(block)
+    block = Block(GOLD_COLOR, ((((n_block % 8) * 100) + 2,
+                                ((n_block // 8) * 25) + 2), (96, 23)))
+    block.append(block)
+
 
 def draw_block():
-	for block in blocks:
-		screen.draw.filled_rect(block, block.colour)
-
-
+    for block in blocks:
+        screen.draw.filled_rect(block, block.colour)
