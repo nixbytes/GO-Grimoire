@@ -12,7 +12,6 @@ def bubble_sort(numbers):
 	Best-case performance	{\displaystyle O(n)} O(n)
 	Average performance	{\displaystyle O(n^{2})} O(n^{2})
 	Worst-case space complexity
-
     
     """
     changed = True
