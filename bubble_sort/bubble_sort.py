@@ -26,7 +26,7 @@ def bubble_sort(numbers):
 if __name__ == "__main__":
    """Sample usage and simple test suite"""
    print("==============================")
-   n = 10aweaweqd
+   n = '10aweaweqd'
    sample_list = [randint(0, 9) for num in range(0, n)]
    print("example list: ",sample_list)
    print("==== result ==================")
