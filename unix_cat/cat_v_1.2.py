@@ -1,9 +1,11 @@
+#!/usr/bin/python3
+
 import sys
 
 from optparse import OptionParser
 
 
-class unix_cat:
+class UnixCat:
 
     def __init__(self):
         self.count = 1
@@ -11,11 +13,16 @@ class unix_cat:
     def run(self, i, options):
         # basic mod for print the line
         e = ""
+
         for line in i:
             if options.showend:
+
                 line = line.rstrip()
+
                 e = "$\n"
+
             if options.shownum:
+
                 line = "{0} {1}".format(self.count, line)
 
             self.count += 1
@@ -36,10 +43,10 @@ def main():
 
     (options, args) = parser.parse_args()
 
-    c = unix_cat()
+    c = UnixCat()
 
     # check if file name is given
-    if len(args) > 1:
+    if len(sys.argv) > 1:
         for a in args:
             f = open(a, "r")
             c.run(f, options)
@@ -47,5 +54,5 @@ def main():
         c.run(sys.stdin, options)
 
 if __name__ == '__main__':
-	
+
     main()
