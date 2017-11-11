@@ -1,5 +1,3 @@
-#!/usr/local/bin/python3
-
 import sys
 
 from optparse import OptionParser
@@ -25,11 +23,12 @@ class unix_cat:
 
 
 def main():
-    usage = "usage: %prog [option]... file..."
+
+    usage = "usage: %prog [option]... [file]..."
 
     parser = OptionParser(usage=usage)
 
-    parser.add_option("-E", dest="shownend", action="store_true",
+    parser.add_option("-E", dest="showend", action="store_true",
                       help="Show $ at line endings")
 
     parser.add_option("-n", dest="shownum",
@@ -48,4 +47,5 @@ def main():
         c.run(sys.stdin, options)
 
 if __name__ == '__main__':
+	
     main()

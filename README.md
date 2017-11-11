@@ -11,8 +11,9 @@ I can't help it but I love to code.
 
 * Bubbble Sort
 * Heap Sort
-* lpthw (Learn Python The Hard Way)
-* snake-game (classic snake game)
+* LPTHW (Learn Python The Hard Way)
+* Snake-game (classic snake game)
+* Unix cat command example
 
 ### How to Contribute to the collection
 
