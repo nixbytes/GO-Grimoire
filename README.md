@@ -11,9 +11,11 @@ I can't help it but I love to code.
 
 * Bubbble Sort
 * Heap Sort
+* HangPy 
 * LPTHW (Learn Python The Hard Way)
-* Snake-game (classic snake game)
+* Snake Game (classic snake game) **Still in the work**
 * Unix cat command example
+* uniq word finder
 
 ### How to Contribute to the collection
 
