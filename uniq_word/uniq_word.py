@@ -22,16 +22,17 @@ for line in tm:
 
     print(list)
 
+dict = {}
+
 for word in list:
-	dict[word] = 1
+    dict[word] = 1
 
-	if word in dict:
-		count = dict[word]
-		count += 1
-		dict[word] = count
-	else:
-		dict[word] = 1
+    if word in dict:
+        count = dict[word]
+        count += 1
+        dict[word] = count
+    else:
+        dict[word] = 1
 
-for word,count in dict.iteritems():
-	print(word ":" + str(count))
-	
+for word, count in dict.items():
+    print(word + ":" + str(count))
