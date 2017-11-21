@@ -15,7 +15,8 @@ I can't help it but I love to code.
 * LPTHW (Learn Python The Hard Way)
 * Snake Game (classic snake game) **Still in the work**
 * Unix cat command example
-* uniq word finder
+* Uniq word finder
+* Persistence Storage example
 
 ### How to Contribute to the collection
 
