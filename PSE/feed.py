@@ -1,18 +1,24 @@
 #!/usr/bin/python3
+import pickle
 
-file = open("lxf-text.txt", "w")
+file = open("lxf-text.txt", "wb")
 
-feeds = ["http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml",
-         "http://www.tuxradar.com/rss"]
+feeds = "http://www.tuxradar.com/rss"
 
 for feed in feeds:
-    file.write("{0}\n".format(feed))
+	file.write("{0}\n".format(feed))
 file.close()
 
+# feeds = str(feeds)
 
-with open("lxf-text.txt", "a") as file:
+# feeds = str(feeds)
+
+with open("lxf-text.txt", "wb") as file:
     pickle.dump(feeds, file)
 
 
-with open("lxf-text.txt", "r") as file
+with open("lxf-text.txt", "r") as file:
     feeds = pickle.load(file)
+
+
+# 
