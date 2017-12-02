@@ -41,26 +41,39 @@ class SnakeMain:
         self.screen = pygame.display.set_mode((self.width, self.height))
 
     def MainLoop(self):
-    	# main loop for the game
-    	while True:
+        # main loop for the game
+        while True:
+            # handle each event
+            self.EventsHandler()
 
+            # background = BackGround()
+            # background.draw()
 
-    def EventsHandler():
-    	for event in pygame.event.get():
-    		if event.type == pygame.QUIT:
-    			sys.exit()
+            # update screen
+
+            # PySnake.screen.flip()
+            
+    def EventsHandler(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
 
 class BackGround():
-	# main methods to BG
-	def __init__(self):
+        # main methods to BG
 
-		background_file = "background.png"
+    def __init__(self):
 
-		self.image = pygame.image.load(background_file).convert()
+        background_file = "background.png"
 
-	def draw(self):
-		PySnake.screen.blit(self.image,(0,0))
+        self.image = pygame.image.load(background_file).convert()
+
+    def draw(self):
+        PySnake.screen.blit(self.image, (0, 0))
 
 
 if __name__ == '__main__':
+    # create an instances of Py Snake
+
     PySnake = SnakeMain()
+    PySnake.MainLoop()
