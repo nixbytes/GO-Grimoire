@@ -1,4 +1,4 @@
-#/bin/Python
+#/usr/bin/python
 
 '''Python snake game
 
@@ -15,7 +15,7 @@ from pygame.locals import *
 # class to handle the main function of the game
 
 
-class SnakeMain():
+class SnakeMain:
     # parametar with = passing it as a option
     # default will be 250 x 250
 
@@ -26,6 +26,18 @@ class SnakeMain():
         # Self Window
         self.width = in_Width
         self.height = in_Height
+
+        # window title
+
+        pygame.display.set_caption("Py Snake")
+
+        # center window
+
+        os.environ["SDL_VIDEO_WINDOW_POS"] = "center"
+
+        " generate screen"
+
+        self.screen = pygame.display.set_mode((self.width, self.height))
 
 if __name__ == '__main__':
     main = SnakeMain()
