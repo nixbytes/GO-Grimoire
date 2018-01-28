@@ -11,6 +11,7 @@ I can't help it but I love to code.
 
 * Bubbble Sort
 * Heap Sort
+* Eight Ball
 * HangPy 
 * LPTHW (Learn Python The Hard Way)
 * Snake Game (classic snake game) **Still in the work**
