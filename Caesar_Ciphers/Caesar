@@ -1,1 +1,24 @@
+# Caesar Cipher
+# from Cracking the code book
+
+# import paperclip
+
+# The string to be encrpted/decrpted
+
+message = 'This is my secret message'
+
+# The encryption/decryption key
+
+# whether the programing encrypts of decrypts:
+
+mode = 'encrpt'
+
+# Every possible symbol that can be encrypted:
+
+SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!?.'
+
+# Store the  encrypted/decrypted form of the message:
+
+translated = ''
+
 
