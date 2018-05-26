@@ -1,12 +1,11 @@
 # Caesar Cipher
 # from Cracking the code book
-
 # import paperclip
-
 # The string to be encrypted/decrypted
-key = 13
 
-message = 'This is my secret message'
+message = 'This is my secret message.'
+
+key = 13
 
 # The encryption/decryption key
 
@@ -16,7 +15,7 @@ mode = 'encrypt'
 
 # Every possible symbol that can be encrypted:
 
-SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!?.'
+SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
 
 # Store the  encrypted/decrypted form of the message:
 
@@ -35,18 +34,13 @@ for symbol in message:
             translatedIndex = symbolIndex + key
         elif mode == 'decrypt':
             translatedIndex = symbolIndex - key
-
-    # Handle wraparound, if needed:
-    if translatedIndex >= len(SYMBOLS):
-
-        translatedIndex = translatedIndex - len(SYMBOLS)
-
-    elif translatedIndex < 0:
-
-        translatedIndex = translatedIndex + len(SYMBOLS)
+        # Handle wraparound, if needed:
+        if translatedIndex >= len(SYMBOLS):
+            translatedIndex = translatedIndex - len(SYMBOLS)
+        elif translatedIndex < 0:
+            translatedIndex = translatedIndex + len(SYMBOLS)
 
         translated = translated + SYMBOLS[translatedIndex]
-
     else:
     # Append the symbol without encrypting/decrypting
         translated = translated + symbol
