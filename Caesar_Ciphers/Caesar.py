@@ -1,10 +1,9 @@
-# Caesar Cipher
+# Caesar.py Cipher
 # from Cracking the code book
 # import paperclip
 # The string to be encrypted/decrypted
 
 message = '"Egw3EkivE1pw5EjtiksEq1E5pq2mEj7Eizo3umv2,"E1iqlENqtj7,E"j32E7w3E5qttEvm4mzEkwv4qvkmEumH"'
-
 
 key = 8
 
