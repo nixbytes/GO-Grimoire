@@ -3,15 +3,16 @@
 # import paperclip
 # The string to be encrypted/decrypted
 
-message = 'This is my secret message.'
+message = '"Egw3EkivE1pw5EjtiksEq1E5pq2mEj7Eizo3umv2,"E1iqlENqtj7,E"j32E7w3E5qttEvm4mzEkwv4qvkmEumH"'
 
-key = 13
+
+key = 8
 
 # The encryption/decryption key
 
 # whether the programing encrypts of decrypts:
 
-mode = 'encrypt'
+mode = 'decrypt'
 
 # Every possible symbol that can be encrypted:
 
