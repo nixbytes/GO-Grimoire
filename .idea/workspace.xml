@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1430612-1357-48ed-97bf-99a4494a52e0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Caesar_Ciphers/caesarHacker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caesar_Ciphers/Caesar" beforeDir="false" afterPath="$PROJECT_DIR$/Caesar_Ciphers/Caesar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TCP_UDP/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/TCP_UDP/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,11 +28,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="caesarHacker.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="caesarHacker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Caesar_Ciphers/caesarHacker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="77" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TCP_UDP/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="60">
+                <caret line="4" selection-start-line="4" selection-end-line="4" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -59,6 +69,7 @@
         <option value="$PROJECT_DIR$/Caesar_Ciphers/Caesar" />
         <option value="$PROJECT_DIR$/Caesar_Ciphers/Caesar.py" />
         <option value="$PROJECT_DIR$/Caesar_Ciphers/caesarHacker.py" />
+        <option value="$PROJECT_DIR$/TCP_UDP/README.md" />
       </list>
     </option>
   </component>
@@ -90,11 +101,6 @@
             <path>
               <item name="pyjournal" type="b2602c69:ProjectViewProjectNode" />
               <item name="pyjournal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pyjournal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyjournal" type="462c0819:PsiDirectoryNode" />
-              <item name="Caesar_Ciphers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -277,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527432339766</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="created a caesar brute-force script">
+      <created>1527435033288</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1527435033288</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -291,16 +304,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="2" weight="0.11878788" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5016779" side_tool="true" weight="0.32848486" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.31030303" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.31030303" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49928468" weight="0.32848486" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49832216" visible="true" weight="0.32848486" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49832216" weight="0.32848486" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.29090908" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20457797" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20457797" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969698" />
@@ -358,7 +370,8 @@
     <MESSAGE value="update a spelling, and finish mini project" />
     <MESSAGE value="update the folders (uppercase)" />
     <MESSAGE value="testing encrypt/decrypt with new string" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing encrypt/decrypt with new string" />
+    <MESSAGE value="created a caesar brute-force script" />
+    <option name="LAST_COMMIT_MESSAGE" value="created a caesar brute-force script" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Caesar_Ciphers/Caesar.py">
@@ -391,8 +404,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Caesar_Ciphers/caesarHacker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="77" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TCP_UDP/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="60">
+            <caret line="4" selection-start-line="4" selection-end-line="4" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
