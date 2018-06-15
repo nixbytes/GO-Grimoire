@@ -5,7 +5,6 @@ import sys
 import stat
 from stat import *
 
-
 if len(sys.argv) >= 2:
     filename = str(sys.argv[1])
 else:
@@ -19,6 +18,6 @@ for name, meta in fileMetadata:
         print('It is a directory')
     else:
         print('It is a regular file')
-    print(name, 'take', meta.st_size,'bytes')
+    print(name, 'take', meta.st_size, 'bytes')
 
-print('File Permission',stat.filemode(os.stat(filename).st_mode))
+print('File Permission', stat.filemode(os.stat(filename).st_mode))
