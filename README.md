@@ -1,6 +1,6 @@
-
-![pyjournal](./pyjournal.png)
-
+<p align="center">
+   <img src="./pyjournal.png">
+</p>
 
 # My PyJournals
 
