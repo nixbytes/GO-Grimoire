@@ -1,5 +1,5 @@
 
-![pyjournal](./pyjournal.png)
+![pyjournal](./Python_Book_Logo.png)
 
 
 # My PyJournals
