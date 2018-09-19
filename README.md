@@ -1,6 +1,4 @@
-<p align="center">
-   <img src="./pyjournal.png">
-</p>
+![pyjournal](./Python_Book_Logo.png)
 
 # My PyJournals
 
