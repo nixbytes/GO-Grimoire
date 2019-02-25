@@ -23,12 +23,8 @@ I can't help it but I love to code.
 
 * create a folder with an README
 * use default python (preferably version 3+)
-* link source of algorithm or function   
-* please provide link to source of example
+* link source of algorithm, function or example
 
 
 
 ### create for logo
-
-- [freepik](http://www.freepik.com/) at https://www.flaticon.com/authors/freepik
-- [smashicons](https://smashicons.com/) at https://www.flaticon.com/authors/smashicons
