@@ -9,19 +9,21 @@ def getTitle(url):
 		html = urlopen(url)
 	except HTTPError as e:
 		return None
+	try:
+		bsObj = BeautifulSoup(html.read())
+		title = bsObj.body.h1
+	except AttributeError as e:
+		return None
+		
+	return None
 
 
 title = getTitle("http://www.pythonscraping.com/pages/page1.htmlhttp://www.pythonscraping.com/pages/page1.html")
 
+if title == None:
+	print("Title could not be found")
+else:
+	print(title)
 
-print(title)	
-# try:
-# 	html = urlopen("http://www.pythonscraping.com/pages/page1.htmlhttp://www.pythonscraping.com/pages/page1.html")
-# except HTTPError as e:
-# 	print(e)
-# except URLError as e:
-# 	print("The Server could not be found!")
-# else:
-# 	print("Its Worked")
 
 
