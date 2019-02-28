@@ -15,7 +15,7 @@ def getTitle(url):
 	except AttributeError as e:
 		return None
 		
-	return None
+	return title
 
 
 title = getTitle("http://www.pythonscraping.com/pages/page1.html")
@@ -29,11 +29,11 @@ else:
 
 ### Dealing with children and other descendants
 
-html = urlopen("http://www.pythonscraping.com/pages/page3.html")
+html2 = urlopen("http://www.pythonscraping.com/pages/page3.html")
 
-bsObj = BeautifulSoup(html)
+bsObj2 = BeautifulSoup(html2)
 
-for child in bsObj.find("table",{"id":"giftList"}).children:
+for child in bsObj2.find("table",{"id":"giftList"}).children:
 	print(child)
 
 
