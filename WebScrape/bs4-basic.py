@@ -18,12 +18,23 @@ def getTitle(url):
 	return None
 
 
-title = getTitle("http://www.pythonscraping.com/pages/page1.htmlhttp://www.pythonscraping.com/pages/page1.html")
+title = getTitle("http://www.pythonscraping.com/pages/page1.html")
 
 if title == None:
 	print("Title could not be found")
 else:
 	print(title)
+
+
+
+### Dealing with children and other descendants
+
+html = urlopen("http://www.pythonscraping.com/pages/page3.html")
+
+bsObj = BeautifulSoup(html)
+
+for child in bsObj.find("table",{"id":"giftList"}).children:
+	print(child)
 
 
 
