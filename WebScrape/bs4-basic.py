@@ -14,7 +14,7 @@ def getTitle(url):
 		title = bsObj.body.h1
 	except AttributeError as e:
 		return None
-		
+
 	return title
 
 
@@ -26,7 +26,6 @@ else:
 	print(title)
 
 
-
 ### Dealing with children and other descendants
 
 html2 = urlopen("http://www.pythonscraping.com/pages/page3.html")
@@ -36,5 +35,9 @@ bsObj2 = BeautifulSoup(html2)
 for child in bsObj2.find("table",{"id":"giftList"}).children:
 	print(child)
 
+html3 = urlopen("http://www.pythonscraping.com/pages/page3.html")
 
+bsObj3 = BeautifulSoup(html2)
+
+print(bsObj.find("img",{"src":"../img/gifts/img1.jpg"}).parent.previous_sibling.get_text())
 
