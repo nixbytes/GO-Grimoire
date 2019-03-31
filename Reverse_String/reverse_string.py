@@ -1,9 +1,12 @@
 #!/usr/bin/env pytohn3
 
 def reverse(text):
-    if len(text) == 0:
-        return text
-    else:
-        return reverse(text[1:]) + text[0]
+        if text is None:
+            return 'Missing String Value {}'
+        elif len(text) == 0:
+            return text
+        else:
+            return reverse(text[1:]) + text[0]
 
-print(reverse("cat"))
+# print(reverse())
+print(reverse())
