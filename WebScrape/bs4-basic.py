@@ -8,6 +8,7 @@ a webpage and return Attribute Error
 
 """
 
+
 def getTitle(url):
     try:
         html = urlopen(url)
