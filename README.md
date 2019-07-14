@@ -1,6 +1,4 @@
-
-![pyjournal](./pyjournal.png)
-
+![pyjournal](./Python_Book_Logo.png)
 
 # My PyJournals
 
@@ -16,6 +14,8 @@ I can't help it but I love to code.
 * LPTHW (Learn Python The Hard Way)
 * Snake Game (classic snake game) **Still in the work**
 * Unix cat command example
+* Unix Copy
+* TCP/UDP Basic
 * Uniq word finder
 * Persistence Storage example
 
@@ -23,12 +23,8 @@ I can't help it but I love to code.
 
 * create a folder with an README
 * use default python (preferably version 3+)
-* link source of algorithm or function   
-* please provide link to source of example
+* link source of algorithm, function or example
 
 
 
 ### create for logo
-
-- [freepik](http://www.freepik.com/) at https://www.flaticon.com/authors/freepik
-- [smashicons](https://smashicons.com/) at https://www.flaticon.com/authors/smashicons
