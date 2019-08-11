@@ -1,9 +1,9 @@
 # Reverse Cipher
 # from Cracking Code Book
 
-message = 'Three can keep a secret, if two of them are dead'
+message = "Three can keep a secret, if two of them are dead"
 
-translated = ''
+translated = ""
 
 i = len(message) - 1
 

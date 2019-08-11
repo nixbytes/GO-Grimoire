@@ -1,5 +1,6 @@
 # compares the running time of a list compared to a generator
 import time
+
 # generator function creates an iterator of odd numbers between n and m
 
 
@@ -7,6 +8,8 @@ def oddGen(n, m):
     while n < m:
         yield n
         n += 2
+
+
 # builds a list of odd numbers between n and m
 
 

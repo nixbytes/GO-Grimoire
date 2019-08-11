@@ -2,9 +2,9 @@
 
 # https:// www.nostarch.com/ crackingcodes/ (BSD Licensed)
 
-message = 'guv6Jv6Jz!J6rp5r7Jzr66ntrM'
+message = "guv6Jv6Jz!J6rp5r7Jzr66ntrM"
 
-SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
+SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?."
 
 # Loop for every possible outcome
 
@@ -12,7 +12,7 @@ for key in range(len(SYMBOLS)):
 
     # It is important to set translated to the blank string so that the
 
-    translated = ''
+    translated = ""
 
     # most of the code is the same as Caesar
 
@@ -31,4 +31,4 @@ for key in range(len(SYMBOLS)):
             # Append the symbols
             translated = translated + symbol
 
-    print('Key #%s: %s' % (key, translated))
+    print("Key #%s: %s" % (key, translated))

@@ -2,23 +2,23 @@
 # import os
 import sys
 
-'''
+"""
 this is a smaill program to find words that are uniq
 
-'''
+"""
 
-tm = open(str(sys.argv[1]), 'r')
+tm = open(str(sys.argv[1]), "r")
 
 
 for line in tm:
     # clean each read line
     line = line.strip()
 
-    line = line.translate('!@#$%^&*()_+{}[]\|-=')
+    line = line.translate("!@#$%^&*()_+{}[]\|-=")
 
     line = line.lower()
 
-    list = line.split(' ')
+    list = line.split(" ")
 
     print(list)
 

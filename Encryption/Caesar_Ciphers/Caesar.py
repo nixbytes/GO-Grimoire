@@ -11,15 +11,15 @@ key = 8
 
 # whether the programing encrypts of decrypts:
 
-mode = 'decrypt'
+mode = "decrypt"
 
 # Every possible symbol that can be encrypted:
 
-SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
+SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?."
 
 # Store the  encrypted/decrypted form of the message:
 
-translated = ''
+translated = ""
 
 for symbol in message:
 
@@ -30,9 +30,9 @@ for symbol in message:
         symbolIndex = SYMBOLS.find(symbol)
 
         # Perform encryption/decryption:
-        if mode == 'encrypt':
+        if mode == "encrypt":
             translatedIndex = symbolIndex + key
-        elif mode == 'decrypt':
+        elif mode == "decrypt":
             translatedIndex = symbolIndex - key
         # Handle wraparound, if needed:
         if translatedIndex >= len(SYMBOLS):
@@ -42,13 +42,10 @@ for symbol in message:
 
         translated = translated + SYMBOLS[translatedIndex]
     else:
-    # Append the symbol without encrypting/decrypting
+        # Append the symbol without encrypting/decrypting
         translated = translated + symbol
 
 # Output the translated string
 
 print(translated)
-#pyperclip.copy(translated)
-
-
-
+# pyperclip.copy(translated)

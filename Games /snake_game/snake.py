@@ -1,10 +1,10 @@
 #!/usr/local/bin/python3
 
-'''Python snake game
+"""Python snake game
 Author: Elvin Ramirez
 
 
-'''
+"""
 
 import pygame
 import sys
@@ -52,15 +52,15 @@ class SnakeMain:
             # update screen
 
             # PySnake.screen.flip()
-            
+
     def EventsHandler(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
 
 
-class BackGround():
-        # main methods to BG
+class BackGround:
+    # main methods to BG
 
     def __init__(self):
 
@@ -72,7 +72,7 @@ class BackGround():
         PySnake.screen.blit(self.image, (0, 0))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # create an instances of Py Snake
 
     PySnake = SnakeMain()

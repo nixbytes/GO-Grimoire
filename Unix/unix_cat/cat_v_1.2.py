@@ -6,7 +6,6 @@ from optparse import OptionParser
 
 
 class UnixCat:
-
     def __init__(self):
         self.count = 1
 
@@ -35,11 +34,13 @@ def main():
 
     parser = OptionParser(usage=usage)
 
-    parser.add_option("-E", dest="showend", action="store_true",
-                      help="Show $ at line endings")
+    parser.add_option(
+        "-E", dest="showend", action="store_true", help="Show $ at line endings"
+    )
 
-    parser.add_option("-n", dest="shownum",
-                      action="store_true", help="Show line numbers")
+    parser.add_option(
+        "-n", dest="shownum", action="store_true", help="Show line numbers"
+    )
 
     (options, args) = parser.parse_args()
 
@@ -53,6 +54,7 @@ def main():
     else:
         c.run(sys.stdin, options)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
 
     main()

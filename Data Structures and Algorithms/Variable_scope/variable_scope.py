@@ -1,9 +1,9 @@
-'''
+"""
 “we define two global variables. We need to tell the interpreter, 
 using the keyword global, that inside the function, 
 we are referring to a global variable.”
 
-'''
+"""
 
 a = 10
 b = 20
@@ -21,6 +21,6 @@ print(a)
 print(b)
 
 
-'''
+"""
 Excerpt From: Benjamin Baka. “Python Data Structures and Algorithms.” iBooks. 
-'''
+"""

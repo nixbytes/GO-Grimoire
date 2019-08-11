@@ -1,6 +1,7 @@
 #!/bin/python
 from random import randint
 
+
 def bubble_sort(numbers):
     """
 	describe from wiki
@@ -18,16 +19,17 @@ def bubble_sort(numbers):
     while changed:
         changed = False
         for i in xrange(len(numbers) - 1):
-            if numbers[i] > numbers[i+1]:
-                numbers[i], numbers[i+1] = numbers[i+1], numbers[i]
+            if numbers[i] > numbers[i + 1]:
+                numbers[i], numbers[i + 1] = numbers[i + 1], numbers[i]
                 changed = True
     return numbers
- 
+
+
 if __name__ == "__main__":
-   """Sample usage and simple test suite"""
-   print("==============================")
-   n = '10aweaweqd'
-   sample_list = [randint(0, 9) for num in range(0, n)]
-   print("example list: ",sample_list)
-   print("==== result ==================")
-   print(bubble_sort(sample_list))
+    """Sample usage and simple test suite"""
+    print("==============================")
+    n = "10aweaweqd"
+    sample_list = [randint(0, 9) for num in range(0, n)]
+    print("example list: ", sample_list)
+    print("==== result ==================")
+    print(bubble_sort(sample_list))
