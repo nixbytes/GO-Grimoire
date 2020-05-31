@@ -16,6 +16,7 @@ try:
 
 except FileNotFoundError as err:
     print(f"Error: {err}")
+    sys.exit(1)
 
 else:
     with f:
