@@ -17,9 +17,11 @@ __all__ = ["filter", "fnmatch", "fnmatchcase", "translate"]
 _cache = {}
 _MAXCACHE = 100
 
+
 def _purge():
     """Clear the pattern cache"""
     _cache.clear()
+
 
 def fnmatch(name, pat):
     """Test whether FILENAME matches PATTERN.
@@ -38,15 +40,18 @@ def fnmatch(name, pat):
     """
 
     import os
+
     name = os.path.normcase(name)
     pat = os.path.normcase(pat)
     return fnmatchcase(name, pat)
 
+
 def filter(names, pat):
     """Return the subset of the list NAMES that match PAT"""
-    import os,posixpath
-    result=[]
-    pat=os.path.normcase(pat)
+    import os, posixpath
+
+    result = []
+    pat = os.path.normcase(pat)
     try:
         re_pat = _cache[pat]
     except KeyError:
@@ -66,6 +71,7 @@ def filter(names, pat):
                 result.append(name)
     return result
 
+
 def fnmatchcase(name, pat):
     """Test whether FILENAME matches PATTERN, including case.
 
@@ -82,6 +88,7 @@ def fnmatchcase(name, pat):
         _cache[pat] = re_pat = re.compile(res)
     return re_pat.match(name) is not None
 
+
 def translate(pat):
     """Translate a shell PATTERN to a regular expression.
 
@@ -89,32 +96,32 @@ def translate(pat):
     """
 
     i, n = 0, len(pat)
-    res = ''
+    res = ""
     while i < n:
         c = pat[i]
-        i = i+1
-        if c == '*':
-            res = res + '.*'
-        elif c == '?':
-            res = res + '.'
-        elif c == '[':
+        i = i + 1
+        if c == "*":
+            res = res + ".*"
+        elif c == "?":
+            res = res + "."
+        elif c == "[":
             j = i
-            if j < n and pat[j] == '!':
-                j = j+1
-            if j < n and pat[j] == ']':
-                j = j+1
-            while j < n and pat[j] != ']':
-                j = j+1
+            if j < n and pat[j] == "!":
+                j = j + 1
+            if j < n and pat[j] == "]":
+                j = j + 1
+            while j < n and pat[j] != "]":
+                j = j + 1
             if j >= n:
-                res = res + '\\['
+                res = res + "\\["
             else:
-                stuff = pat[i:j].replace('\\','\\\\')
-                i = j+1
-                if stuff[0] == '!':
-                    stuff = '^' + stuff[1:]
-                elif stuff[0] == '^':
-                    stuff = '\\' + stuff
-                res = '%s[%s]' % (res, stuff)
+                stuff = pat[i:j].replace("\\", "\\\\")
+                i = j + 1
+                if stuff[0] == "!":
+                    stuff = "^" + stuff[1:]
+                elif stuff[0] == "^":
+                    stuff = "\\" + stuff
+                res = "%s[%s]" % (res, stuff)
         else:
             res = res + re.escape(c)
-    return res + '\Z(?ms)'
+    return res + "\Z(?ms)"

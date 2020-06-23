@@ -6,8 +6,16 @@ functions from this module themselves.
 import os
 import stat
 
-__all__ = ['commonprefix', 'exists', 'getatime', 'getctime', 'getmtime',
-           'getsize', 'isdir', 'isfile']
+__all__ = [
+    "commonprefix",
+    "exists",
+    "getatime",
+    "getctime",
+    "getmtime",
+    "getsize",
+    "isdir",
+    "isfile",
+]
 
 
 try:
@@ -17,6 +25,7 @@ except NameError:
     # will not exist. Fake one.
     class _unicode(object):
         pass
+
 
 # Does a path exist?
 # This is false for dangling symbolic links on systems that support them.
@@ -75,13 +84,15 @@ def getctime(filename):
 # Return the longest prefix of all list elements.
 def commonprefix(m):
     "Given a list of pathnames, returns the longest common leading component"
-    if not m: return ''
+    if not m:
+        return ""
     s1 = min(m)
     s2 = max(m)
     for i, c in enumerate(s1):
         if c != s2[i]:
             return s1[:i]
     return s1
+
 
 # Split a path in root and extension.
 # The extension is everything starting at the last dot in the last
@@ -110,4 +121,4 @@ def _splitext(p, sep, altsep, extsep):
                 return p[:dotIndex], p[dotIndex:]
             filenameIndex += 1
 
-    return p, ''
+    return p, ""

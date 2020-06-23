@@ -11,15 +11,27 @@ bootstrapping issues.  Unit tests are in test_collections.
 from abc import ABCMeta, abstractmethod
 import sys
 
-__all__ = ["Hashable", "Iterable", "Iterator",
-           "Sized", "Container", "Callable",
-           "Set", "MutableSet",
-           "Mapping", "MutableMapping",
-           "MappingView", "KeysView", "ItemsView", "ValuesView",
-           "Sequence", "MutableSequence",
-           ]
+__all__ = [
+    "Hashable",
+    "Iterable",
+    "Iterator",
+    "Sized",
+    "Container",
+    "Callable",
+    "Set",
+    "MutableSet",
+    "Mapping",
+    "MutableMapping",
+    "MappingView",
+    "KeysView",
+    "ItemsView",
+    "ValuesView",
+    "Sequence",
+    "MutableSequence",
+]
 
 ### ONE-TRICK PONIES ###
+
 
 def _hasattr(C, attr):
     try:
@@ -67,14 +79,14 @@ class Iterable:
                 return True
         return NotImplemented
 
+
 Iterable.register(str)
 
 
 class Iterator(Iterable):
-
     @abstractmethod
     def next(self):
-        'Return the next item from the iterator. When exhausted, raise StopIteration'
+        "Return the next item from the iterator. When exhausted, raise StopIteration"
         raise StopIteration
 
     def __iter__(self):
@@ -187,11 +199,11 @@ class Set(Sized, Iterable, Container):
 
     @classmethod
     def _from_iterable(cls, it):
-        '''Construct an instance of the class from any iterable input.
+        """Construct an instance of the class from any iterable input.
 
         Must override this method if the class constructor signature
         does not accept an iterable for an input.
-        '''
+        """
         return cls(it)
 
     def __and__(self, other):
@@ -202,7 +214,7 @@ class Set(Sized, Iterable, Container):
     __rand__ = __and__
 
     def isdisjoint(self, other):
-        'Return True if two sets have a null intersection.'
+        "Return True if two sets have a null intersection."
         for value in other:
             if value in self:
                 return False
@@ -221,16 +233,14 @@ class Set(Sized, Iterable, Container):
             if not isinstance(other, Iterable):
                 return NotImplemented
             other = self._from_iterable(other)
-        return self._from_iterable(value for value in self
-                                   if value not in other)
+        return self._from_iterable(value for value in self if value not in other)
 
     def __rsub__(self, other):
         if not isinstance(other, Set):
             if not isinstance(other, Iterable):
                 return NotImplemented
             other = self._from_iterable(other)
-        return self._from_iterable(value for value in other
-                                   if value not in self)
+        return self._from_iterable(value for value in other if value not in self)
 
     def __xor__(self, other):
         if not isinstance(other, Set):
@@ -266,7 +276,7 @@ class Set(Sized, Iterable, Container):
         h &= MASK
         for x in self:
             hx = hash(x)
-            h ^= (hx ^ (hx << 16) ^ 89869747)  * 3644798167
+            h ^= (hx ^ (hx << 16) ^ 89869747) * 3644798167
             h &= MASK
         h = h * 69069 + 907133923
         h &= MASK
@@ -275,6 +285,7 @@ class Set(Sized, Iterable, Container):
         if h == -1:
             h = 590923713
         return h
+
 
 Set.register(frozenset)
 
@@ -331,7 +342,7 @@ class MutableSet(Set):
         return self
 
     def __iand__(self, it):
-        for value in (self - it):
+        for value in self - it:
             self.discard(value)
         return self
 
@@ -356,6 +367,7 @@ class MutableSet(Set):
                 self.discard(value)
         return self
 
+
 MutableSet.register(set)
 
 
@@ -377,7 +389,7 @@ class Mapping(Sized, Iterable, Container):
         raise KeyError
 
     def get(self, key, default=None):
-        'D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.'
+        "D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None."
         try:
             return self[key]
         except KeyError:
@@ -392,16 +404,16 @@ class Mapping(Sized, Iterable, Container):
             return True
 
     def iterkeys(self):
-        'D.iterkeys() -> an iterator over the keys of D'
+        "D.iterkeys() -> an iterator over the keys of D"
         return iter(self)
 
     def itervalues(self):
-        'D.itervalues() -> an iterator over the values of D'
+        "D.itervalues() -> an iterator over the values of D"
         for key in self:
             yield self[key]
 
     def iteritems(self):
-        'D.iteritems() -> an iterator over the (key, value) items of D'
+        "D.iteritems() -> an iterator over the (key, value) items of D"
         for key in self:
             yield (key, self[key])
 
@@ -428,8 +440,8 @@ class Mapping(Sized, Iterable, Container):
     def __ne__(self, other):
         return not (self == other)
 
-class MappingView(Sized):
 
+class MappingView(Sized):
     def __init__(self, mapping):
         self._mapping = mapping
 
@@ -437,11 +449,10 @@ class MappingView(Sized):
         return len(self._mapping)
 
     def __repr__(self):
-        return '{0.__class__.__name__}({0._mapping!r})'.format(self)
+        return "{0.__class__.__name__}({0._mapping!r})".format(self)
 
 
 class KeysView(MappingView, Set):
-
     @classmethod
     def _from_iterable(self, it):
         return set(it)
@@ -453,10 +464,11 @@ class KeysView(MappingView, Set):
         for key in self._mapping:
             yield key
 
+
 KeysView.register(type({}.viewkeys()))
 
-class ItemsView(MappingView, Set):
 
+class ItemsView(MappingView, Set):
     @classmethod
     def _from_iterable(self, it):
         return set(it)
@@ -474,10 +486,11 @@ class ItemsView(MappingView, Set):
         for key in self._mapping:
             yield (key, self._mapping[key])
 
+
 ItemsView.register(type({}.viewitems()))
 
-class ValuesView(MappingView):
 
+class ValuesView(MappingView):
     def __contains__(self, value):
         for key in self._mapping:
             if value == self._mapping[key]:
@@ -488,7 +501,9 @@ class ValuesView(MappingView):
         for key in self._mapping:
             yield self._mapping[key]
 
+
 ValuesView.register(type({}.viewvalues()))
+
 
 class MutableMapping(Mapping):
 
@@ -512,9 +527,9 @@ class MutableMapping(Mapping):
     __marker = object()
 
     def pop(self, key, default=__marker):
-        '''D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
+        """D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
           If key is not found, d is returned if given, otherwise KeyError is raised.
-        '''
+        """
         try:
             value = self[key]
         except KeyError:
@@ -526,9 +541,9 @@ class MutableMapping(Mapping):
             return value
 
     def popitem(self):
-        '''D.popitem() -> (k, v), remove and return some (key, value) pair
+        """D.popitem() -> (k, v), remove and return some (key, value) pair
            as a 2-tuple; but raise KeyError if D is empty.
-        '''
+        """
         try:
             key = next(iter(self))
         except StopIteration:
@@ -538,7 +553,7 @@ class MutableMapping(Mapping):
         return key, value
 
     def clear(self):
-        'D.clear() -> None.  Remove all items from D.'
+        "D.clear() -> None.  Remove all items from D."
         try:
             while True:
                 self.popitem()
@@ -546,19 +561,19 @@ class MutableMapping(Mapping):
             pass
 
     def update(*args, **kwds):
-        ''' D.update([E, ]**F) -> None.  Update D from mapping/iterable E and F.
+        """ D.update([E, ]**F) -> None.  Update D from mapping/iterable E and F.
             If E present and has a .keys() method, does:     for k in E: D[k] = E[k]
             If E present and lacks .keys() method, does:     for (k, v) in E: D[k] = v
             In either case, this is followed by: for k, v in F.items(): D[k] = v
-        '''
+        """
         if not args:
-            raise TypeError("descriptor 'update' of 'MutableMapping' object "
-                            "needs an argument")
+            raise TypeError(
+                "descriptor 'update' of 'MutableMapping' object " "needs an argument"
+            )
         self = args[0]
         args = args[1:]
         if len(args) > 1:
-            raise TypeError('update expected at most 1 arguments, got %d' %
-                            len(args))
+            raise TypeError("update expected at most 1 arguments, got %d" % len(args))
         if args:
             other = args[0]
             if isinstance(other, Mapping):
@@ -574,12 +589,13 @@ class MutableMapping(Mapping):
             self[key] = value
 
     def setdefault(self, key, default=None):
-        'D.setdefault(k[,d]) -> D.get(k,d), also set D[k]=d if k not in D'
+        "D.setdefault(k[,d]) -> D.get(k,d), also set D[k]=d if k not in D"
         try:
             return self[key]
         except KeyError:
             self[key] = default
         return default
+
 
 MutableMapping.register(dict)
 
@@ -619,17 +635,18 @@ class Sequence(Sized, Iterable, Container):
             yield self[i]
 
     def index(self, value):
-        '''S.index(value) -> integer -- return first index of value.
+        """S.index(value) -> integer -- return first index of value.
            Raises ValueError if the value is not present.
-        '''
+        """
         for i, v in enumerate(self):
             if v == value:
                 return i
         raise ValueError
 
     def count(self, value):
-        'S.count(value) -> integer -- return number of occurrences of value'
+        "S.count(value) -> integer -- return number of occurrences of value"
         return sum(1 for v in self if v == value)
+
 
 Sequence.register(tuple)
 Sequence.register(basestring)
@@ -656,40 +673,41 @@ class MutableSequence(Sequence):
 
     @abstractmethod
     def insert(self, index, value):
-        'S.insert(index, object) -- insert object before index'
+        "S.insert(index, object) -- insert object before index"
         raise IndexError
 
     def append(self, value):
-        'S.append(object) -- append object to the end of the sequence'
+        "S.append(object) -- append object to the end of the sequence"
         self.insert(len(self), value)
 
     def reverse(self):
-        'S.reverse() -- reverse *IN PLACE*'
+        "S.reverse() -- reverse *IN PLACE*"
         n = len(self)
-        for i in range(n//2):
-            self[i], self[n-i-1] = self[n-i-1], self[i]
+        for i in range(n // 2):
+            self[i], self[n - i - 1] = self[n - i - 1], self[i]
 
     def extend(self, values):
-        'S.extend(iterable) -- extend sequence by appending elements from the iterable'
+        "S.extend(iterable) -- extend sequence by appending elements from the iterable"
         for v in values:
             self.append(v)
 
     def pop(self, index=-1):
-        '''S.pop([index]) -> item -- remove and return item at index (default last).
+        """S.pop([index]) -> item -- remove and return item at index (default last).
            Raise IndexError if list is empty or index is out of range.
-        '''
+        """
         v = self[index]
         del self[index]
         return v
 
     def remove(self, value):
-        '''S.remove(value) -- remove first occurrence of value.
+        """S.remove(value) -- remove first occurrence of value.
            Raise ValueError if the value is not present.
-        '''
+        """
         del self[self.index(value)]
 
     def __iadd__(self, values):
         self.extend(values)
         return self
+
 
 MutableSequence.register(list)

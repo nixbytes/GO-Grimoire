@@ -10,7 +10,8 @@ import codecs, base64
 
 ### Codec APIs
 
-def base64_encode(input,errors='strict'):
+
+def base64_encode(input, errors="strict"):
 
     """ Encodes the object input and returns a tuple (output
         object, length consumed).
@@ -20,11 +21,12 @@ def base64_encode(input,errors='strict'):
         error handling for this codec.
 
     """
-    assert errors == 'strict'
+    assert errors == "strict"
     output = base64.encodestring(input)
     return (output, len(input))
 
-def base64_decode(input,errors='strict'):
+
+def base64_decode(input, errors="strict"):
 
     """ Decodes the object input and returns a tuple (output
         object, length consumed).
@@ -38,38 +40,45 @@ def base64_decode(input,errors='strict'):
         error handling for this codec.
 
     """
-    assert errors == 'strict'
+    assert errors == "strict"
     output = base64.decodestring(input)
     return (output, len(input))
 
-class Codec(codecs.Codec):
 
-    def encode(self, input,errors='strict'):
-        return base64_encode(input,errors)
-    def decode(self, input,errors='strict'):
-        return base64_decode(input,errors)
+class Codec(codecs.Codec):
+    def encode(self, input, errors="strict"):
+        return base64_encode(input, errors)
+
+    def decode(self, input, errors="strict"):
+        return base64_decode(input, errors)
+
 
 class IncrementalEncoder(codecs.IncrementalEncoder):
     def encode(self, input, final=False):
-        assert self.errors == 'strict'
+        assert self.errors == "strict"
         return base64.encodestring(input)
+
 
 class IncrementalDecoder(codecs.IncrementalDecoder):
     def decode(self, input, final=False):
-        assert self.errors == 'strict'
+        assert self.errors == "strict"
         return base64.decodestring(input)
 
-class StreamWriter(Codec,codecs.StreamWriter):
+
+class StreamWriter(Codec, codecs.StreamWriter):
     pass
 
-class StreamReader(Codec,codecs.StreamReader):
+
+class StreamReader(Codec, codecs.StreamReader):
     pass
+
 
 ### encodings module API
 
+
 def getregentry():
     return codecs.CodecInfo(
-        name='base64',
+        name="base64",
         encode=base64_encode,
         decode=base64_decode,
         incrementalencoder=IncrementalEncoder,

@@ -12,18 +12,20 @@ import codecs, sys
 
 encode = codecs.utf_16_encode
 
-def decode(input, errors='strict'):
+
+def decode(input, errors="strict"):
     return codecs.utf_16_decode(input, errors, True)
 
+
 class IncrementalEncoder(codecs.IncrementalEncoder):
-    def __init__(self, errors='strict'):
+    def __init__(self, errors="strict"):
         codecs.IncrementalEncoder.__init__(self, errors)
         self.encoder = None
 
     def encode(self, input, final=False):
         if self.encoder is None:
             result = codecs.utf_16_encode(input, self.errors)[0]
-            if sys.byteorder == 'little':
+            if sys.byteorder == "little":
                 self.encoder = codecs.utf_16_le_encode
             else:
                 self.encoder = codecs.utf_16_be_encode
@@ -39,26 +41,28 @@ class IncrementalEncoder(codecs.IncrementalEncoder):
         # 0: stream is in natural order for this platform
         # 2: endianness hasn't been determined yet
         # (we're never writing in unnatural order)
-        return (2 if self.encoder is None else 0)
+        return 2 if self.encoder is None else 0
 
     def setstate(self, state):
         if state:
             self.encoder = None
         else:
-            if sys.byteorder == 'little':
+            if sys.byteorder == "little":
                 self.encoder = codecs.utf_16_le_encode
             else:
                 self.encoder = codecs.utf_16_be_encode
 
+
 class IncrementalDecoder(codecs.BufferedIncrementalDecoder):
-    def __init__(self, errors='strict'):
+    def __init__(self, errors="strict"):
         codecs.BufferedIncrementalDecoder.__init__(self, errors)
         self.decoder = None
 
     def _buffer_decode(self, input, errors, final):
         if self.decoder is None:
-            (output, consumed, byteorder) = \
-                codecs.utf_16_ex_decode(input, errors, 0, final)
+            (output, consumed, byteorder) = codecs.utf_16_ex_decode(
+                input, errors, 0, final
+            )
             if byteorder == -1:
                 self.decoder = codecs.utf_16_le_decode
             elif byteorder == 1:
@@ -72,8 +76,9 @@ class IncrementalDecoder(codecs.BufferedIncrementalDecoder):
         codecs.BufferedIncrementalDecoder.reset(self)
         self.decoder = None
 
+
 class StreamWriter(codecs.StreamWriter):
-    def __init__(self, stream, errors='strict'):
+    def __init__(self, stream, errors="strict"):
         codecs.StreamWriter.__init__(self, stream, errors)
         self.encoder = None
 
@@ -81,10 +86,10 @@ class StreamWriter(codecs.StreamWriter):
         codecs.StreamWriter.reset(self)
         self.encoder = None
 
-    def encode(self, input, errors='strict'):
+    def encode(self, input, errors="strict"):
         if self.encoder is None:
             result = codecs.utf_16_encode(input, errors)
-            if sys.byteorder == 'little':
+            if sys.byteorder == "little":
                 self.encoder = codecs.utf_16_le_encode
             else:
                 self.encoder = codecs.utf_16_be_encode
@@ -92,8 +97,8 @@ class StreamWriter(codecs.StreamWriter):
         else:
             return self.encoder(input, errors)
 
-class StreamReader(codecs.StreamReader):
 
+class StreamReader(codecs.StreamReader):
     def reset(self):
         codecs.StreamReader.reset(self)
         try:
@@ -101,22 +106,23 @@ class StreamReader(codecs.StreamReader):
         except AttributeError:
             pass
 
-    def decode(self, input, errors='strict'):
-        (object, consumed, byteorder) = \
-            codecs.utf_16_ex_decode(input, errors, 0, False)
+    def decode(self, input, errors="strict"):
+        (object, consumed, byteorder) = codecs.utf_16_ex_decode(input, errors, 0, False)
         if byteorder == -1:
             self.decode = codecs.utf_16_le_decode
         elif byteorder == 1:
             self.decode = codecs.utf_16_be_decode
-        elif consumed>=2:
-            raise UnicodeError,"UTF-16 stream does not start with BOM"
+        elif consumed >= 2:
+            raise UnicodeError, "UTF-16 stream does not start with BOM"
         return (object, consumed)
+
 
 ### encodings module API
 
+
 def getregentry():
     return codecs.CodecInfo(
-        name='utf-16',
+        name="utf-16",
         encode=encode,
         decode=decode,
         incrementalencoder=IncrementalEncoder,

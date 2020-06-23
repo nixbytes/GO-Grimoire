@@ -8,7 +8,10 @@ import types
 from _weakrefset import WeakSet
 
 # Instance of old-style class
-class _C: pass
+class _C:
+    pass
+
+
 _InstanceType = type(_C())
 
 
@@ -59,6 +62,7 @@ class abstractproperty(property):
             def setx(self, value): ...
             x = abstractproperty(getx, setx)
     """
+
     __isabstractmethod__ = True
 
 
@@ -86,9 +90,11 @@ class ABCMeta(type):
     def __new__(mcls, name, bases, namespace):
         cls = super(ABCMeta, mcls).__new__(mcls, name, bases, namespace)
         # Compute set of abstract method names
-        abstracts = set(name
-                     for name, value in namespace.items()
-                     if getattr(value, "__isabstractmethod__", False))
+        abstracts = set(
+            name
+            for name, value in namespace.items()
+            if getattr(value, "__isabstractmethod__", False)
+        )
         for base in bases:
             for name in getattr(base, "__abstractmethods__", set()):
                 value = getattr(cls, name, None)
@@ -128,7 +134,7 @@ class ABCMeta(type):
     def __instancecheck__(cls, instance):
         """Override for isinstance(instance, cls)."""
         # Inline the cache checking when it's simple.
-        subclass = getattr(instance, '__class__', None)
+        subclass = getattr(instance, "__class__", None)
         if subclass is not None and subclass in cls._abc_cache:
             return True
         subtype = type(instance)
@@ -136,14 +142,14 @@ class ABCMeta(type):
         if subtype is _InstanceType:
             subtype = subclass
         if subtype is subclass or subclass is None:
-            if (cls._abc_negative_cache_version ==
-                ABCMeta._abc_invalidation_counter and
-                subtype in cls._abc_negative_cache):
+            if (
+                cls._abc_negative_cache_version == ABCMeta._abc_invalidation_counter
+                and subtype in cls._abc_negative_cache
+            ):
                 return False
             # Fall back to the subclass check.
             return cls.__subclasscheck__(subtype)
-        return (cls.__subclasscheck__(subclass) or
-                cls.__subclasscheck__(subtype))
+        return cls.__subclasscheck__(subclass) or cls.__subclasscheck__(subtype)
 
     def __subclasscheck__(cls, subclass):
         """Override for issubclass(subclass, cls)."""
@@ -167,7 +173,7 @@ class ABCMeta(type):
                 cls._abc_negative_cache.add(subclass)
             return ok
         # Check if it's a direct subclass
-        if cls in getattr(subclass, '__mro__', ()):
+        if cls in getattr(subclass, "__mro__", ()):
             cls._abc_cache.add(subclass)
             return True
         # Check if it's a subclass of a registered class (recursive)

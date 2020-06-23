@@ -10,14 +10,15 @@ http://www.python.org/dev/peps/pep-0205/
 # the module-global ref() function imported from _weakref.
 
 from _weakref import (
-     getweakrefcount,
-     getweakrefs,
-     ref,
-     proxy,
-     CallableProxyType,
-     ProxyType,
-     ReferenceType,
-     _remove_dead_weakref)
+    getweakrefcount,
+    getweakrefs,
+    ref,
+    proxy,
+    CallableProxyType,
+    ProxyType,
+    ReferenceType,
+    _remove_dead_weakref,
+)
 
 from _weakrefset import WeakSet, _IterationGuard
 
@@ -27,10 +28,21 @@ import itertools
 
 ProxyTypes = (ProxyType, CallableProxyType)
 
-__all__ = ["ref", "proxy", "getweakrefcount", "getweakrefs",
-           "WeakKeyDictionary", "ReferenceType", "ProxyType",
-           "CallableProxyType", "ProxyTypes", "WeakValueDictionary",
-           "WeakSet", "WeakMethod", "finalize"]
+__all__ = [
+    "ref",
+    "proxy",
+    "getweakrefcount",
+    "getweakrefs",
+    "WeakKeyDictionary",
+    "ReferenceType",
+    "ProxyType",
+    "CallableProxyType",
+    "ProxyTypes",
+    "WeakValueDictionary",
+    "WeakSet",
+    "WeakMethod",
+    "finalize",
+]
 
 
 class WeakMethod(ref):
@@ -46,8 +58,10 @@ class WeakMethod(ref):
             obj = meth.__self__
             func = meth.__func__
         except AttributeError:
-            raise TypeError("argument should be a bound method, not {}"
-                            .format(type(meth))) from None
+            raise TypeError(
+                "argument should be a bound method, not {}".format(type(meth))
+            ) from None
+
         def _cb(arg):
             # The self-weakref trick is needed to avoid creating a reference
             # cycle.
@@ -56,6 +70,7 @@ class WeakMethod(ref):
                 self._alive = False
                 if callback is not None:
                     callback(self)
+
         self = ref.__new__(cls, obj, _cb)
         self._func_ref = ref(func, _cb)
         self._meth_type = type(meth)
@@ -93,6 +108,7 @@ class WeakValueDictionary(collections.MutableMapping):
     Entries in the dictionary will be discarded when no strong
     reference to the value exists anymore
     """
+
     # We inherit the constructor without worrying about the input
     # dictionary; since it uses our .update() method, we get the right
     # checks (if the other dictionary is a WeakValueDictionary,
@@ -101,11 +117,14 @@ class WeakValueDictionary(collections.MutableMapping):
 
     def __init__(*args, **kw):
         if not args:
-            raise TypeError("descriptor '__init__' of 'WeakValueDictionary' "
-                            "object needs an argument")
+            raise TypeError(
+                "descriptor '__init__' of 'WeakValueDictionary' "
+                "object needs an argument"
+            )
         self, *args = args
         if len(args) > 1:
-            raise TypeError('expected at most 1 arguments, got %d' % len(args))
+            raise TypeError("expected at most 1 arguments, got %d" % len(args))
+
         def remove(wr, selfref=ref(self), _atomic_removal=_remove_dead_weakref):
             self = selfref()
             if self is not None:
@@ -115,6 +134,7 @@ class WeakValueDictionary(collections.MutableMapping):
                     # Atomic removal is necessary since this function
                     # can be called asynchronously by the GC
                     _atomic_removal(d, wr.key)
+
         self._remove = remove
         # A list of keys to be removed
         self._pending_removals = []
@@ -181,6 +201,7 @@ class WeakValueDictionary(collections.MutableMapping):
 
     def __deepcopy__(self, memo):
         from copy import deepcopy
+
         if self._pending_removals:
             self._commit_removals()
         new = self.__class__()
@@ -287,11 +308,13 @@ class WeakValueDictionary(collections.MutableMapping):
 
     def update(*args, **kwargs):
         if not args:
-            raise TypeError("descriptor 'update' of 'WeakValueDictionary' "
-                            "object needs an argument")
+            raise TypeError(
+                "descriptor 'update' of 'WeakValueDictionary' "
+                "object needs an argument"
+            )
         self, *args = args
         if len(args) > 1:
-            raise TypeError('expected at most 1 arguments, got %d' % len(args))
+            raise TypeError("expected at most 1 arguments, got %d" % len(args))
         dict = args[0] if args else None
         if self._pending_removals:
             self._commit_removals()
@@ -329,7 +352,7 @@ class KeyedRef(ref):
 
     """
 
-    __slots__ = "key",
+    __slots__ = ("key",)
 
     def __new__(type, ob, callback, key):
         self = ref.__new__(type, ob, callback)
@@ -353,6 +376,7 @@ class WeakKeyDictionary(collections.MutableMapping):
 
     def __init__(self, dict=None):
         self.data = {}
+
         def remove(k, selfref=ref(self)):
             self = selfref()
             if self is not None:
@@ -360,6 +384,7 @@ class WeakKeyDictionary(collections.MutableMapping):
                     self._pending_removals.append(k)
                 else:
                     del self.data[k]
+
         self._remove = remove
         # A list of dead weakrefs (keys to be removed)
         self._pending_removals = []
@@ -418,6 +443,7 @@ class WeakKeyDictionary(collections.MutableMapping):
 
     def __deepcopy__(self, memo):
         from copy import deepcopy
+
         new = self.__class__()
         for key, value in self.data.items():
             o = key()
@@ -426,7 +452,7 @@ class WeakKeyDictionary(collections.MutableMapping):
         return new
 
     def get(self, key, default=None):
-        return self.data.get(ref(key),default)
+        return self.data.get(ref(key), default)
 
     def __contains__(self, key):
         try:
@@ -482,7 +508,7 @@ class WeakKeyDictionary(collections.MutableMapping):
         return self.data.pop(ref(key), *args)
 
     def setdefault(self, key, default=None):
-        return self.data.setdefault(ref(key, self._remove),default)
+        return self.data.setdefault(ref(key, self._remove), default)
 
     def update(self, dict=None, **kwargs):
         d = self.data
@@ -528,6 +554,7 @@ class finalize:
             # We may register the exit function more than once because
             # of a thread race, but that is harmless
             import atexit
+
             atexit.register(self._exitfunc)
             finalize._registered_with_atexit = True
         info = self._Info()
@@ -584,17 +611,21 @@ class finalize:
         info = self._registry.get(self)
         obj = info and info.weakref()
         if obj is None:
-            return '<%s object at %#x; dead>' % (type(self).__name__, id(self))
+            return "<%s object at %#x; dead>" % (type(self).__name__, id(self))
         else:
-            return '<%s object at %#x; for %r at %#x>' % \
-                (type(self).__name__, id(self), type(obj).__name__, id(obj))
+            return "<%s object at %#x; for %r at %#x>" % (
+                type(self).__name__,
+                id(self),
+                type(obj).__name__,
+                id(obj),
+            )
 
     @classmethod
     def _select_for_exit(cls):
         # Return live finalizers marked for exit, oldest first
-        L = [(f,i) for (f,i) in cls._registry.items() if i.atexit]
-        L.sort(key=lambda item:item[1].index)
-        return [f for (f,i) in L]
+        L = [(f, i) for (f, i) in cls._registry.items() if i.atexit]
+        L.sort(key=lambda item: item[1].index)
+        return [f for (f, i) in L]
 
     @classmethod
     def _exitfunc(cls):
@@ -605,6 +636,7 @@ class finalize:
         try:
             if cls._registry:
                 import gc
+
                 if gc.isenabled():
                     reenable_gc = True
                     gc.disable()

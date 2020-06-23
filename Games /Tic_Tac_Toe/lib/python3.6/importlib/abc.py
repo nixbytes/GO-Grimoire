@@ -2,10 +2,11 @@
 from . import _bootstrap
 from . import _bootstrap_external
 from . import machinery
+
 try:
     import _frozen_importlib
 except ImportError as exc:
-    if exc.name != '_frozen_importlib':
+    if exc.name != "_frozen_importlib":
         raise
     _frozen_importlib = None
 try:
@@ -62,7 +63,7 @@ class MetaPathFinder(Finder):
         method.
 
         """
-        if not hasattr(self, 'find_spec'):
+        if not hasattr(self, "find_spec"):
             return None
         found = self.find_spec(fullname, path)
         return found.loader if found is not None else None
@@ -72,8 +73,14 @@ class MetaPathFinder(Finder):
         This method is used by importlib.invalidate_caches().
         """
 
-_register(MetaPathFinder, machinery.BuiltinImporter, machinery.FrozenImporter,
-          machinery.PathFinder, machinery.WindowsRegistryFinder)
+
+_register(
+    MetaPathFinder,
+    machinery.BuiltinImporter,
+    machinery.FrozenImporter,
+    machinery.PathFinder,
+    machinery.WindowsRegistryFinder,
+)
 
 
 class PathEntryFinder(Finder):
@@ -98,7 +105,7 @@ class PathEntryFinder(Finder):
         is provided than backwards-compatible functionality is provided.
 
         """
-        if not hasattr(self, 'find_spec'):
+        if not hasattr(self, "find_spec"):
             return None, []
         found = self.find_spec(fullname)
         if found is not None:
@@ -116,6 +123,7 @@ class PathEntryFinder(Finder):
         """An optional method for clearing the finder's cache, if any.
         This method is used by PathFinder.invalidate_caches().
         """
+
 
 _register(PathEntryFinder, machinery.FileFinder)
 
@@ -150,7 +158,7 @@ class Loader(metaclass=abc.ABCMeta):
         functionality for this method.
 
         """
-        if not hasattr(self, 'exec_module'):
+        if not hasattr(self, "exec_module"):
             raise ImportError
         return _bootstrap._load_module_shim(self, fullname)
 
@@ -223,15 +231,16 @@ class InspectLoader(Loader):
         raise ImportError
 
     @staticmethod
-    def source_to_code(data, path='<string>'):
+    def source_to_code(data, path="<string>"):
         """Compile 'data' into a code object.
 
         The 'data' argument can be anything that compile() can handle. The'path'
         argument should be where the data was retrieved (when applicable)."""
-        return compile(data, path, 'exec', dont_inherit=True)
+        return compile(data, path, "exec", dont_inherit=True)
 
     exec_module = _bootstrap_external._LoaderBasics.exec_module
     load_module = _bootstrap_external._LoaderBasics.load_module
+
 
 _register(InspectLoader, machinery.BuiltinImporter, machinery.FrozenImporter)
 
@@ -270,6 +279,7 @@ class ExecutionLoader(InspectLoader):
         else:
             return self.source_to_code(source, path)
 
+
 _register(ExecutionLoader, machinery.ExtensionFileLoader)
 
 
@@ -278,8 +288,8 @@ class FileLoader(_bootstrap_external.FileLoader, ResourceLoader, ExecutionLoader
     """Abstract base class partially implementing the ResourceLoader and
     ExecutionLoader ABCs."""
 
-_register(FileLoader, machinery.SourceFileLoader,
-            machinery.SourcelessFileLoader)
+
+_register(FileLoader, machinery.SourceFileLoader, machinery.SourcelessFileLoader)
 
 
 class SourceLoader(_bootstrap_external.SourceLoader, ResourceLoader, ExecutionLoader):
@@ -303,7 +313,7 @@ class SourceLoader(_bootstrap_external.SourceLoader, ResourceLoader, ExecutionLo
         """Return the (int) modification time for the path (str)."""
         if self.path_stats.__func__ is SourceLoader.path_stats:
             raise IOError
-        return int(self.path_stats(path)['mtime'])
+        return int(self.path_stats(path)["mtime"])
 
     def path_stats(self, path):
         """Return a metadata dict for the source pointed to by the path (str).
@@ -314,7 +324,7 @@ class SourceLoader(_bootstrap_external.SourceLoader, ResourceLoader, ExecutionLo
         """
         if self.path_mtime.__func__ is SourceLoader.path_mtime:
             raise IOError
-        return {'mtime': self.path_mtime(path)}
+        return {"mtime": self.path_mtime(path)}
 
     def set_data(self, path, data):
         """Write the bytes to the path (if possible).
@@ -325,5 +335,6 @@ class SourceLoader(_bootstrap_external.SourceLoader, ResourceLoader, ExecutionLo
         reason the file cannot be written because of permissions, fail
         silently.
         """
+
 
 _register(SourceLoader, machinery.SourceFileLoader)
