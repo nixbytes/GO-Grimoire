@@ -1,17 +1,10 @@
-# Welcome to MkDocs
+![pyjournal](./Python_Book_Logo.png)
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# PyJournals
 
-## Commands
+This Blog is a collection of python algorithm, function and theories that I learn on my road to code. I am Linux Admin by Day and a Pythonista by Night
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+![Python](https://en.wikipedia.org/wiki/Python_%28programming_language%29) is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant whitespace.
 
-## Project layout
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+[python](https://en.wikipedia.org/wiki/Python_%28programming_language%29#/media/File:Python_logo_and_wordmark.svg)
