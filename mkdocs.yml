@@ -1,2 +1,8 @@
 site_name: PyJournals
+site_description: Project base my coding in python
+site_author: LinuxBytes
 theme: journal
+nav:
+  - Home: index.md
+  - Post:
+    - Freq Number: freq_numbers.md
