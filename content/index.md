@@ -1,3 +1,6 @@
+Title: PyJournals
+Date: 2020-07-07
+
 ![pyjournal](./Python_Book_Logo.png)
 
 # PyJournals
