@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'LinuxBytes'
 SITENAME = 'Pyjournal'
 SITEURL = ''
+THEME = 'cebong'
 
 PATH = 'content'
 
