@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Freq Digits</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/freq-digits.html" rel="bookmark"
+           title="Permalink to Freq Digits">Freq Digits</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-07-07T00:00:00+00:00">
+                Published: Tue 07 July 2020
+        </abbr>
+
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->      <h1>Freq Digits</h1>
+<p>Given an integer number, find the most frequent digit in it.</p>
+<ul>
+<li>
+<p>how to count things efficiently?</p>
+</li>
+<li>
+<p>keep calm and code in Python!</p>
+</li>
+</ul>
+<p>Let use the statistics that comes with python stand library</p>
+<h2>Statistic Module</h2>
+<p>This module provides functions for calculating mathematical statistics of numeric (Real-valued) data.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statistics</span> 
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mode</span> 
+</pre></div>
+
+
+<p>This module statistics offers a Single mode (most common value) of discrete or nominal data.
+The values or method to find this is to convert the vaules into a string and then back again once the frequent digit is
+found</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">freq_digit</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">mode</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+</pre></div>
+
+
+<h2>Trying out a value</h2>
+<p>Next we want to test a value</p>
+<div class="highlight"><pre><span></span><span class="n">num_list</span> <span class="o">=</span> <span class="mi">12345</span>
+</pre></div>
+
+
+<h2>Finally</h2>
+<p>we can run the function with some additional values and input</p>
+<div class="highlight"><pre><span></span><span class="n">freq_digit</span><span class="p">(</span><span class="n">num_list</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">1</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">freq_digit</span><span class="p">(</span><span class="mi">12334433</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">3</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">freq_digit</span><span class="p">(</span><span class="mi">773283277</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">7</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">freq_digit</span><span class="p">(</span><span class="mi">1121</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">1</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
