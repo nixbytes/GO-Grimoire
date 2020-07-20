@@ -10,6 +10,7 @@ __pycache__/
 .Python
 build/
 etc/
+share/
 bin/
 develop-eggs/
 dist/
