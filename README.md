@@ -19,7 +19,9 @@ In the mystical world of programming, where logic intertwines with creativity, t
 
 > ## How to contribute to the project
 > :exclamation:  All code must use the python standard library and have folder and readme in the folder
+
 > :exclamation:  For testing and functionality, all chapters should be builts with cli tooling like argparse or sys.arg
+
 > :exclamation:  All credit to source should be include on this readme at the bottom as a footnote
 
 ### The Scrolls of Command: Argparse and sys.argv
