@@ -16,6 +16,7 @@ Each chapter of the Go-Grimoire unveils a miniature project or trick that showca
 |---------|--------------------------------|
 | HTTP    | Basic HTTP Server using `net/http` |
 | ...     | More spells to be unveiled...  |
+| greetings|                               |
 
 ---
 
